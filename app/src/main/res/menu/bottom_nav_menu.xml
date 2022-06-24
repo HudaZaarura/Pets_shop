@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+    <item
+
+        android:id="@+id/exit"
+        android:icon="@drawable/ic_baseline_exit_to_app_24"
+        android:title="Exit"
+       />
+    <item
+        android:id="@+id/favorite"
+        android:icon="@drawable/ic_baseline_favorite_24"
+        android:title="Favorite"
+        />
+    <item
+        android:id="@+id/holder"
+        android:title=""
+        android:enabled="false"
+       >
+
+    </item>
+
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/ic_baseline_person_24"
+
+        android:title="Profile"/>
+
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="Home"
+        />
+
+</menu>

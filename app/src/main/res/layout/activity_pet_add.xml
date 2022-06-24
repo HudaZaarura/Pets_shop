@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#878686"
+    android:layoutDirection="ltr"
+
+    android:layout_height="match_parent"
+    tools:context=".PetAdd">
+
+    <ImageView
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha=".63"
+        android:scaleType="fitXY"
+        android:src="@drawable/img_2"></ImageView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/font1"
+            android:gravity="center"
+            android:text="Add your pet"
+            android:textColor="@color/teal_200"
+            android:textSize="34sp" />
+
+        <EditText
+            android:id="@+id/etcontactnumber"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/border_fill"
+            android:hint="contact number"
+            android:inputType="phone"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
+
+            android:textColor="#fff"
+            android:textColorHint="@color/white"
+            android:textDirection="ltr" />
+
+
+        <TextView
+            android:id="@+id/gendertextview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
+            android:text="gender"
+            android:textColor="@color/black"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/etdisc"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/border_fill"
+            android:hint="description"
+            android:inputType="text"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
+            android:textColor="#fff"
+            android:textColorHint="@color/white"
+            android:textDirection="ltr" />
+
+        <EditText
+
+            android:id="@+id/etprice"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/border_fill"
+            android:hint="price"
+            android:inputType="numberDecimal"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
+            android:textColor="#fff"
+            android:textColorHint="@color/white"
+            android:textDirection="ltr" />
+
+
+        <EditText
+            android:id="@+id/etage"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/border_fill"
+            android:hint="age"
+            android:inputType="number"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
+            android:textColor="@color/white"
+
+            android:textColorHint="@color/white"
+            android:textDirection="ltr" />
+
+        <EditText
+            android:id="@+id/etlocation"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/border_fill"
+            android:hint="location"
+            android:inputType="text"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textDirection="ltr" />
+
+        <Spinner
+
+
+            android:id="@+id/spkind"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/border_fill"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
+
+
+            />
+
+        <TextView
+
+            android:id="@+id/textviewkind"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="category"
+            android:paddingLeft="10dp"
+            android:textColorHint="@color/black"
+            android:visibility="gone" />
+
+        <ImageView
+
+            android:id="@+id/ivphotoPetAdd"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/border_fill"
+            android:onClick="selectPhoto"
+            android:scaleType="center"
+            android:src="@drawable/ic_baseline_add_24" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:orientation="horizontal"
+
+            >
+
+            <RadioButton
+                android:id="@+id/radiomale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginBottom="11dp"
+                android:checked="false"
+                android:text="@string/radio_male"
+                android:textColor="@color/white" />
+
+            <RadioButton
+                android:id="@+id/radiofemale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:checked="false"
+                android:text="@string/radio_female"
+                android:textColor="@color/white" />
+
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/border_fill"
+            android:baselineAligned="false"
+            android:onClick="add"
+            android:text="add pet"
+            android:textColor="#fff" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

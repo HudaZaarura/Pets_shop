@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    app:contentPadding="4dp"
+    app:cardElevation="4dp"
+    android:layoutDirection="ltr"
+    app:cardUseCompatPadding="true"
+    app:cardCornerRadius="8dp"
+    android:layout_height="140dp">
+
+    <LinearLayout
+        android:textDirection="ltr"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_gravity="center|left"
+            android:id="@+id/imageViewrow"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+
+            android:src="@drawable/bganimal"
+            />
+
+
+        <LinearLayout
+            android:layout_gravity="right"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:gravity="right"
+
+                android:layout_marginTop="10dp"
+                android:singleLine="true"
+                android:paddingRight="10dp"
+                android:textColor="#111"
+                android:textSize="15dp"
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                />
+            <TextView
+                android:gravity="right"
+                android:layout_marginTop="10dp"
+                android:singleLine="true"
+                android:paddingRight="10dp"
+                android:textColor="#111"
+                android:textSize="15dp"
+                android:id="@+id/detailsrow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                />
+
+            <TextView
+                android:gravity="right"
+                android:layout_marginTop="10dp"
+                android:singleLine="true"
+                android:paddingRight="10dp"
+                android:textColor="#111"
+                android:textSize="15dp"
+                android:id="@+id/age"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

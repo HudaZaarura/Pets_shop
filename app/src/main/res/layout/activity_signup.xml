@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".SignupActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha=".45"
+        android:scaleType="fitXY"
+        android:src="@drawable/img_3"></ImageView>
+
+    <TextView
+
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="0dp"
+        android:background="#fff"
+        android:gravity="left|center"
+        android:paddingLeft="10dp"
+        android:singleLine="true"
+        android:text="Create new user"
+        android:textColor="#FF5733"
+
+
+        android:textSize="22sp"
+        android:textStyle="bold"></TextView>
+
+    <EditText
+
+
+        android:id="@+id/person"
+        android:layout_width="240dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/borderbottom"
+        android:fontFamily="sans-serif"
+        android:hint="Name"
+        android:inputType="text"
+        android:textColor="#fff"
+        android:textColorHint="#ccc" />
+    <EditText
+
+        android:inputType="text"
+        android:textColor="#fff"
+        android:layout_below="@+id/person"
+        android:fontFamily="sans-serif"
+        android:background="@drawable/borderbottom"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/usernamesignup"
+        android:layout_width="240dp"
+        android:layout_height="40dp"
+        android:textColorHint="#ccc"
+        android:hint="username:email@example"
+       />
+
+    <EditText
+
+        android:inputType="textPassword"
+        android:textColor="#fff"
+        android:fontFamily="sans-serif"
+        android:textColorHint="#ccc"
+        android:background="@drawable/borderbottom"
+        android:id="@+id/passwordsignup"
+        android:layout_width="240dp"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/usernamesignup"
+        android:layout_marginTop="30dp"
+        android:hint="password"
+ />
+
+    <EditText
+
+        android:id="@+id/confirmpassword"
+        android:layout_width="240dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/passwordsignup"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/borderbottom"
+        android:fontFamily="sans-serif"
+        android:hint="confirm password"
+        android:inputType="textPassword"
+        android:textColor="#fff"
+
+        android:textColorHint="#ccc" />
+
+    <Button
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/confirmpassword"
+        android:id="@+id/signup"
+        android:layout_width="240dp"
+        android:layout_height="50dp"
+      android:layout_marginTop="60dp"
+        android:backgroundTint="#77FF00FB"
+        android:onClick="signup"
+        android:text="sign up"
+       />
+
+    <Button
+        android:id="@+id/addpet"
+        android:layout_width="wrap_content"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="80dp"
+        android:backgroundTint="#77FF00FB"
+        android:onClick="addpet"
+        android:text="addpet"
+    />
+
+
+</RelativeLayout>

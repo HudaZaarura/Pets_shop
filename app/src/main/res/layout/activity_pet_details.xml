@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layoutDirection="ltr"
+    android:background="#2E2E2E"
+    tools:context=".PetDetailsActivity">
+
+    <ImageView
+        android:alpha=".45"
+        android:scaleType="fitXY"
+        android:src="@drawable/bg5"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ImageView>
+
+    <LinearLayout
+
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/font1"
+            android:gravity="center"
+            android:text="Profile Pet"
+            android:textColor="@color/teal_200"
+            android:textSize="35dp"></TextView>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="80dp"
+            android:orientation="horizontal"
+
+            android:paddingLeft="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font1"
+                android:text="Price:"
+                android:textColor="#fff"
+                android:textSize="16dp"></TextView>
+
+            <TextView
+
+                android:id="@+id/pricedetails"
+                android:layout_width="149dp"
+                android:layout_height="32dp"
+                android:layout_marginLeft="0dp"
+                android:background="@drawable/borderbottom"
+                android:gravity="left"
+                android:text="price:"
+                app:layout_constraintBottom_toTopOf="@+id/contactnumdetails"
+                app:layout_constraintStart_toStartOf="parent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font1"
+                android:text="Location:"
+                android:textColor="#fff"
+                android:textSize="16dp"></TextView>
+
+            <TextView
+                android:id="@+id/locationdetails"
+                android:layout_width="149dp"
+                android:layout_height="32dp"
+                android:background="@drawable/borderbottom"
+                android:gravity="left"
+                android:text="location"
+                app:layout_constraintBottom_toTopOf="@+id/descriptiondetails"
+                app:layout_constraintStart_toStartOf="parent" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imagedetails1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.01"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <ImageView
+            android:id="@+id/imagedetails2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="8dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toStartOf="@+id/imagedetails3"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <ImageView
+            android:id="@+id/imagedetails3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="16dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font1"
+                android:text="Category:"
+                android:textColor="#fff"
+                android:textSize="16dp"></TextView>
+
+            <TextView
+                android:id="@+id/categorydetails"
+                android:layout_width="147dp"
+                android:layout_height="29dp"
+                android:background="@drawable/borderbottom"
+                android:gravity="left"
+                android:text="category:"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imagedetails1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font1"
+                android:text="Age:"
+                android:textColor="#fff"
+                android:textSize="16dp"></TextView>
+
+            <TextView
+                android:id="@+id/agedetails"
+                android:layout_width="149dp"
+                android:layout_height="32dp"
+                android:background="@drawable/borderbottom"
+                android:gravity="left"
+                android:text="age:"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/categorydetails" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font1"
+                android:text="Contact number:"
+                android:textColor="#fff"
+                android:textSize="16dp"></TextView>
+
+            <TextView
+                android:id="@+id/contactnumdetails"
+                android:layout_width="149dp"
+                android:layout_height="32dp"
+                android:background="@drawable/borderbottom"
+                android:gravity="left"
+                android:text="contact number:"
+               />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font1"
+                android:text="Gender:"
+                android:textColor="#fff"
+                android:textSize="16dp"></TextView>
+
+            <TextView
+                android:gravity="left"
+                android:id="@+id/genderdetails"
+                android:layout_width="149dp"
+                android:layout_height="32dp"
+                android:background="@drawable/borderbottom"
+                android:text="gender:"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/agedetails" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font1"
+                android:text="Description:"
+                android:textColor="#fff"
+                android:textSize="16dp"></TextView>
+
+            <TextView
+                android:gravity="left"
+                android:id="@+id/descriptiondetails"
+                android:layout_width="149dp"
+                android:layout_height="32dp"
+                android:background="@drawable/borderbottom"
+                android:text="description:" />
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>
