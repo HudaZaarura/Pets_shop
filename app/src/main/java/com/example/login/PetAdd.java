@@ -148,7 +148,7 @@ public class PetAdd extends AppCompatActivity {
                     .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                         @Override
                         public void onSuccess(DocumentReference documentReference) {
-                            dbMessage.Message(getApplicationContext(),"New Pet Sotre");
+                            dbMessage.Message(getApplicationContext(),"New Pet added");
                             /*
                             location = etlocation.getText().toString();
             description = etdiscreption.getText().toString();
