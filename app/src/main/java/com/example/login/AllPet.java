@@ -2,6 +2,7 @@ package com.example.login;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -71,6 +72,7 @@ public class AllPet extends AppCompatActivity {
         //error.setX(-1000);
         error.animate().translationX(-200).setDuration(600).translationX(0);
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -146,6 +148,15 @@ public class AllPet extends AppCompatActivity {
                                 }
                             },200);
                             break;
+
+
+                        case R.id.bluetooth:
+                            item.setChecked(true);
+                            Intent i=new Intent(AllPet.this,BtControllerActivity.class);
+                            startActivity(i);
+
+                            break;
+
                     }
                 }
                 catch (Exception ex){

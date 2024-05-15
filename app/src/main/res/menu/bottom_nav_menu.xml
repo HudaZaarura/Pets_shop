@@ -10,11 +10,13 @@
         android:icon="@drawable/ic_baseline_exit_to_app_24"
         android:title="Exit"
        />
+
     <item
-        android:id="@+id/favorite"
-        android:icon="@drawable/ic_baseline_favorite_24"
-        android:title="Favorite"
+        android:id="@+id/bluetooth"
+        android:icon="@drawable/baseline_media_bluetooth_24"
+        android:title="Bluetooth"
         />
+
     <item
         android:id="@+id/holder"
         android:title=""

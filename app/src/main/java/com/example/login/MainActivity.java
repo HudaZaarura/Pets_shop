@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
         connectComponents();
-
     }
     private void connectComponents(){
         etUsername=findViewById(R.id.username1);
@@ -39,6 +38,12 @@ public class MainActivity extends AppCompatActivity {
         utils = Utilities.getInstance();
         fbs= FireBaseServices.getInstance();
         loader=findViewById(R.id.loader);
+
+        if(auth.getCurrentUser()!=null) {
+            Intent intent = new Intent(MainActivity.this, AllPet.class);
+            startActivity(intent);
+        }
+
     }
     public void StartSignUp(View view){
         Intent i = new Intent(MainActivity.this, SignupActivity.class);
