@@ -3,7 +3,10 @@ package com.example.login;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -12,6 +15,7 @@ import com.squareup.picasso.Picasso;
 public class PetDetailsActivity extends AppCompatActivity {
     private TextView detailsprice, detailslocation,detailsdescription,detailsage,detailsgender,detailscontactnum,detailscategory;
     private ImageView ivPhoto;
+    private Button callbtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +40,7 @@ public class PetDetailsActivity extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
+        super.onBackPressed();
         finish();
     }
 
@@ -48,5 +53,18 @@ public class PetDetailsActivity extends AppCompatActivity {
         ivPhoto = findViewById(R.id.imageViewrow);
         detailsage=findViewById(R.id.agedetails);
         detailsgender=findViewById(R.id.genderdetails);
+        callbtn=findViewById(R.id.callButton);
+
+        callbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                callContact();
+            }
+        });
+    }
+    public void callContact(){
+        Uri number=Uri.parse("tel:"+detailscontactnum.getText().toString());
+        Intent callIntent=new Intent(Intent.ACTION_DIAL,number);
+        startActivity(callIntent);
     }
 }
