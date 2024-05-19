@@ -19,6 +19,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
+    <!-- Visual LED ImageView -->
+
+    <!-- Connect Button -->
+
+    <!-- Buttons for Controlling Devices -->
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
@@ -35,12 +41,6 @@
         app:subtitleTextColor="@android:color/background_light"
         app:title="Bluetooth Connection"
         app:titleTextColor="@android:color/background_light" />
-
-    <!-- Visual LED ImageView -->
-
-    <!-- Connect Button -->
-
-    <!-- Buttons for Controlling Devices -->
 
     <ImageView
         android:id="@+id/imageView4"
@@ -152,7 +152,7 @@
         android:id="@+id/imageView"
         android:layout_width="142dp"
         android:layout_height="142dp"
-        android:layout_marginTop="236dp"
+        android:layout_marginTop="232dp"
         android:background="@drawable/baseline_wind_power_24"
         android:contentDescription="Fan"
         app:layout_constraintEnd_toEndOf="parent"

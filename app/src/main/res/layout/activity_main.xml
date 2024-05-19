@@ -12,9 +12,12 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:alpha=".65"
         android:scaleType="fitXY"
         android:src="@drawable/img_3"></ImageView>
+
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/loader"
         android:visibility="gone"
@@ -80,15 +83,14 @@
         style="?attr/buttonBarStyle"
         android:layout_width="200dp"
         android:layout_height="48dp"
-        android:layout_marginTop="5dp"
         android:layout_below="@+id/btnlogin"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="61dp"
         android:background="@android:color/transparent"
         android:backgroundTint="@android:color/transparent"
         android:onClick="StartSignUp"
-        android:text="Create a new account?"
 
-        />
+        android:text="Create a new account?" />
 
     <Button
         android:visibility="gone"
@@ -115,4 +117,17 @@
         android:text="All pets"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/forgotpw"
+        android:layout_width="216dp"
+        android:layout_height="35dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+
+        android:layout_marginStart="101dp"
+        android:layout_marginBottom="298dp"
+        android:background="@android:color/transparent"
+        android:text="Forgot Password?" />
 </RelativeLayout>
