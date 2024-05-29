@@ -15,16 +15,13 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <ImageView
-            android:layout_gravity="center|left"
             android:id="@+id/imageViewrow"
             android:layout_width="100dp"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:scaleType="fitXY"
-
-            android:src="@drawable/img"
-            />
-
+            android:src="@drawable/ic_launcher_background" />
 
         <LinearLayout
             android:layout_gravity="right"

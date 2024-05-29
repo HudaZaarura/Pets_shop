@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/black"
     android:backgroundTint="@color/black"
-    tools:context=".MainActivity">
+    tools:context="LoginActivity">
 
     <ImageView
         android:layout_width="match_parent"
@@ -75,7 +75,7 @@
         android:text="log in"
 
         android:layout_below="@+id/password1"
-       />
+        tools:ignore="OnClick" />
 
     <Button
 
@@ -90,7 +90,8 @@
         android:backgroundTint="@android:color/transparent"
         android:onClick="StartSignUp"
 
-        android:text="Create a new account?" />
+        android:text="Create a new account?"
+        tools:ignore="OnClick" />
 
     <Button
         android:visibility="gone"
@@ -104,7 +105,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnlogin"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="OnClick" />
 
     <Button
         android:visibility="gone"
@@ -116,12 +118,13 @@
         android:layout_marginBottom="36dp"
         android:text="All pets"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="OnClick" />
 
     <Button
         android:id="@+id/forgotpw"
         android:layout_width="216dp"
-        android:layout_height="35dp"
+        android:layout_height="48dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
