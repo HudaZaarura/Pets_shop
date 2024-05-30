@@ -56,12 +56,16 @@ public class AdapterPet extends RecyclerView.Adapter<AdapterPet.ViewHolder> {
     // binds the data to the TextView in each row
     @Override
     public void onBindViewHolder(AdapterPet.ViewHolder holder, int position) {
-        Pet rest = mData.get(position);
-        holder.tvName.setText(rest.getDescription());
-        holder.txCatg.setText((rest.getCategory()));
-        holder.txAge.setText(rest.getAge());
-//        if(!rest.getPhoto().isEmpty())
-//       Picasso.get().load(rest.getPhoto()).into(holder.ivPhoto);
+        Pet pet = mData.get(position);
+        holder.tvName.setText(pet.getDescription());
+        holder.txCatg.setText((pet.getCategory()));
+        holder.txAge.setText(pet.getAge());
+        if(pet.getPhoto() == null ||  pet.getPhoto().isEmpty()) {
+            Picasso.get().load(R.drawable.img).into(holder.ivPhoto);
+        }
+        else {
+            Picasso.get().load(pet.getPhoto()).into(holder.ivPhoto);
+        }
     }
 
     // total number of rows

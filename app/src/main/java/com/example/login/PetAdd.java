@@ -142,6 +142,7 @@ public class PetAdd extends AppCompatActivity {
                             etPhone.setText("");
                             radioButton.setChecked(false);
                             Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                            // TODO: gotoAllPet
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {

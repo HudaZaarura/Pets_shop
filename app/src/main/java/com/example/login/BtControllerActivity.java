@@ -54,6 +54,7 @@ public class BtControllerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_btcontroller);
+        //init();
         Utils utils = Utils.getInstance(this);
         // UI Initialization
         final Button buttonConnect = findViewById(R.id.buttonConnect);
@@ -627,5 +628,10 @@ public class BtControllerActivity extends AppCompatActivity {
         a.addCategory(Intent.CATEGORY_HOME);
         a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(a);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
     }
 }
