@@ -1,6 +1,8 @@
 package com.example.login;
 
-import static android.content.ContentValues.TAG;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
@@ -19,14 +21,13 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.UUID;
+
+import static android.content.ContentValues.TAG;
 
 public class BtControllerActivity extends AppCompatActivity {
 
@@ -46,15 +47,11 @@ public class BtControllerActivity extends AppCompatActivity {
     private final static int MESSAGE_READ7 = 8; // used in bluetooth handler to identify message update
     private final static int MESSAGE_READ8 = 9; // used in bluetooth handler to identify message update
     private final static int MESSAGE_READ9 = 10; // used in bluetooth handler to identify message update
-    private final static int MESSAGE_READ10 = 11; // used in bluetooth handler to identify message update
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_btcontroller);
-        //init();
         Utils utils = Utils.getInstance(this);
         // UI Initialization
         final Button buttonConnect = findViewById(R.id.buttonConnect);
@@ -62,40 +59,48 @@ public class BtControllerActivity extends AppCompatActivity {
         final ProgressBar progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.GONE);
         final TextView textViewInfo = findViewById(R.id.textViewInfo);
-        final Button buttonToggle = findViewById(R.id.buttonFirstFloorLED);
+        final Button buttonToggle = findViewById(R.id.buttonToggle);
         buttonToggle.setEnabled(false);
-        final ImageView imageView4 = findViewById(R.id.imageView4);
-        imageView4.setBackgroundColor(getResources().getColor(R.color.colorOff));
-       /* final Button buttonSecondFloorLED = findViewById(R.id.buttonSecondFloorLED);
-        buttonSecondFloorLED.setEnabled(false);
-        final ImageView imageView2 = findViewById(R.id.imageView2);
-        imageView2.setBackgroundColor(getResources().getColor(R.color.colorOff));*/
-        final Button buttonFan = findViewById(R.id.buttonFan);
-        buttonFan .setEnabled(false);
         final ImageView imageView = findViewById(R.id.imageView);
         imageView.setBackgroundColor(getResources().getColor(R.color.colorOff));
-        final Button buttonDoor= findViewById(R.id.buttonDoor);
-        buttonDoor.setEnabled(false);
+
+        final Button buttonRed = findViewById(R.id.buttonred);
+        buttonToggle.setEnabled(false);
+
+
+        final Button buttonGreen = findViewById(R.id.buttongreen);
+        buttonToggle.setEnabled(false);
+
+
+        final Button buttonBlue = findViewById(R.id.buttonblue);
+        buttonToggle.setEnabled(false);
+
+
+        final Button buttonOff = findViewById(R.id.buttonoff);
+        buttonToggle.setEnabled(false);
+
+
+        final Button buttonMusic = findViewById(R.id.buttonmusic);
+        buttonToggle.setEnabled(false);
+        final ImageView imageView4 = findViewById(R.id.imageView4);
+        imageView.setBackgroundColor(getResources().getColor(R.color.colorOff));
+
+        final Button buttonFan = findViewById(R.id.buttonfan);
+        buttonToggle.setEnabled(false);
+        final ImageView imageView2 = findViewById(R.id.imageView2);
+        imageView.setBackgroundColor(getResources().getColor(R.color.colorOff));
+
+        final Button buttonDoor = findViewById(R.id.buttondoor);
+        buttonToggle.setEnabled(false);
         final ImageView imageView3 = findViewById(R.id.imageView3);
-        imageView3.setBackgroundColor(getResources().getColor(R.color.colorOff));
-        final Button buttonMusic = findViewById(R.id.buttonMusic);
-        buttonMusic.setEnabled(false);
+        imageView.setBackgroundColor(getResources().getColor(R.color.colorOff));
+
+        final Button buttonTemp = findViewById(R.id.buttontemp);
+        buttonToggle.setEnabled(false);
         final ImageView imageView5 = findViewById(R.id.imageView5);
-        imageView5.setBackgroundColor(getResources().getColor(R.color.colorOff));
-        final Button buttonSendTemperature = findViewById(R.id.buttonSendTemperature);
-        buttonSendTemperature.setEnabled(false);
-        final ImageView imageView6 = findViewById(R.id.imageView6);
-        final ImageView imageView7 = findViewById(R.id.imageView7);
-        imageView6.setBackgroundColor(getResources().getColor(R.color.colorOff));
-        imageView7.setBackgroundColor(getResources().getColor(R.color.colorOff));
-        final Button buttonRed = findViewById(R.id.buttonRed);
-        buttonRed.setEnabled(false);
-        final Button buttonGreen = findViewById(R.id.buttonGreen);
-        buttonGreen.setEnabled(false);
-        final Button buttonBlue = findViewById(R.id.buttonBlue);
-        buttonBlue.setEnabled(false);
-        final Button buttonOff = findViewById(R.id.buttonOff);
-        buttonOff.setEnabled(false);
+        imageView.setBackgroundColor(getResources().getColor(R.color.colorOff));
+
+
         // If a bluetooth device has been selected from SelectDeviceActivity
         deviceName = getIntent().getStringExtra("deviceName");
         if (deviceName != null) {
@@ -130,15 +135,15 @@ public class BtControllerActivity extends AppCompatActivity {
                                 progressBar.setVisibility(View.GONE);
                                 buttonConnect.setEnabled(true);
                                 buttonToggle.setEnabled(true);
-                           //     buttonSecondFloorLED.setEnabled(true);
+                                buttonRed.setEnabled(true);
+                                buttonBlue.setEnabled(true);
+                                buttonGreen.setEnabled(true);
+                                buttonOff.setEnabled(true);
+                                buttonMusic.setEnabled(true);
                                 buttonFan.setEnabled(true);
                                 buttonDoor.setEnabled(true);
-                                buttonMusic.setEnabled(true);
-                                buttonSendTemperature.setEnabled(true);
-                                buttonRed.setEnabled(true);
-                                buttonGreen.setEnabled(true);
-                                buttonBlue.setEnabled(true);
-                                buttonOff.setEnabled(true);
+                                buttonTemp.setEnabled(true);
+
                                 break;
                             case -1:
                                 toolbar.setSubtitle("Device fails to connect");
@@ -151,76 +156,65 @@ public class BtControllerActivity extends AppCompatActivity {
                     case MESSAGE_READ:
                         String arduinoMsg = msg.obj.toString(); // Read message from Arduino
                         switch (arduinoMsg.toLowerCase()) {
-                            case "First floor led is turned on":
-                                buttonToggle.setBackgroundColor(getResources().getColor(R.color.colorOn));
+                            case "led is turned on":
+                                imageView.setBackgroundColor(getResources().getColor(R.color.colorOn));
                                 textViewInfo.setText("Arduino Message : " + arduinoMsg);
                                 break;
-                            case "First floor led is turned off":
-                                buttonToggle.setBackgroundColor(getResources().getColor(R.color.colorOff));
+                            case "led is turned off":
+                                imageView.setBackgroundColor(getResources().getColor(R.color.colorOff));
                                 textViewInfo.setText("Arduino Message : " + arduinoMsg);
                                 break;
                         }
-                  /*  case MESSAGE_READ2:
+                    case MESSAGE_READ2:
                         String arduinoMsg2 = msg.obj.toString(); // Read message from Arduino
                         switch (arduinoMsg2.toLowerCase()) {
-                            case "Second floor led is turned on":
-                                buttonSecondFloorLED.setBackgroundColor(getResources().getColor(R.color.colorOn));
+                            case " Red led is turned on" :
                                 textViewInfo.setText("Arduino Message : " + arduinoMsg2);
                                 break;
-                            case "Second floor led is turned off":
-                                buttonSecondFloorLED.setBackgroundColor(getResources().getColor(R.color.colorOff));
-                                textViewInfo.setText("Arduino Message : " + arduinoMsg2);
-                                break;
-                        }*/
+
+                        }
+
                     case MESSAGE_READ3:
                         String arduinoMsg3 = msg.obj.toString(); // Read message from Arduino
                         switch (arduinoMsg3.toLowerCase()) {
-                            case "Fan is turned on":
-                                buttonFan.setBackgroundColor(getResources().getColor(R.color.colorOn));
+                            case "Green led is turned on":
                                 textViewInfo.setText("Arduino Message : " + arduinoMsg3);
                                 break;
-                            case "Fan is turned off":
-                                buttonFan.setBackgroundColor(getResources().getColor(R.color.colorOff));
-                                textViewInfo.setText("Arduino Message : " + arduinoMsg3);
-                                break;
+
                         }
                     case MESSAGE_READ4:
                         String arduinoMsg4 = msg.obj.toString(); // Read message from Arduino
                         switch (arduinoMsg4.toLowerCase()) {
-                            case "Door is open":
-                                buttonDoor.setBackgroundColor(getResources().getColor(R.color.colorOn));
+                            case "Blue led is turned on":
                                 textViewInfo.setText("Arduino Message : " + arduinoMsg4);
                                 break;
-                            case "Door is closed":
-                                buttonDoor.setBackgroundColor(getResources().getColor(R.color.colorOff));
-                                textViewInfo.setText("Arduino Message : " + arduinoMsg4);
-                                break;
+
                         }
+
                     case MESSAGE_READ5:
                         String arduinoMsg5 = msg.obj.toString(); // Read message from Arduino
                         switch (arduinoMsg5.toLowerCase()) {
-                            case "Music is turned on":
-                                buttonMusic.setBackgroundColor(getResources().getColor(R.color.colorOn));
+                            case "Everything is turned off":
                                 textViewInfo.setText("Arduino Message : " + arduinoMsg5);
                                 break;
-                            case "Music is turned off":
-                                buttonMusic.setBackgroundColor(getResources().getColor(R.color.colorOff));
-                                textViewInfo.setText("Arduino Message : " + arduinoMsg5);
-                                break;
+
                         }
+
                     case MESSAGE_READ6:
                         String arduinoMsg6 = msg.obj.toString(); // Read message from Arduino
                         switch (arduinoMsg6.toLowerCase()) {
-                            case "Temperature was sent ":
-                                buttonSendTemperature.setBackgroundColor(getResources().getColor(R.color.colorOff));
+                            case "Music is turned on":
+                                imageView4.setBackgroundColor(getResources().getColor(R.color.colorOn));
                                 textViewInfo.setText("Arduino Message : " + arduinoMsg6);
                                 break;
 
                         }
+
                     case MESSAGE_READ7:
                         String arduinoMsg7 = msg.obj.toString(); // Read message from Arduino
                         switch (arduinoMsg7.toLowerCase()) {
-                            case "RED led is turned on":
+                            case "Fan is turned on":
+                                imageView2.setBackgroundColor(getResources().getColor(R.color.colorOn));
                                 textViewInfo.setText("Arduino Message : " + arduinoMsg7);
                                 break;
 
@@ -228,7 +222,8 @@ public class BtControllerActivity extends AppCompatActivity {
                     case MESSAGE_READ8:
                         String arduinoMsg8 = msg.obj.toString(); // Read message from Arduino
                         switch (arduinoMsg8.toLowerCase()) {
-                            case "Green led is turned on":
+                            case "Door is opened":
+                                imageView3.setBackgroundColor(getResources().getColor(R.color.colorOn));
                                 textViewInfo.setText("Arduino Message : " + arduinoMsg8);
                                 break;
 
@@ -236,20 +231,13 @@ public class BtControllerActivity extends AppCompatActivity {
                     case MESSAGE_READ9:
                         String arduinoMsg9 = msg.obj.toString(); // Read message from Arduino
                         switch (arduinoMsg9.toLowerCase()) {
-                            case "Blue led is turned on":
+                            case "The temperature is shown on the screen":
+                                imageView5.setBackgroundColor(getResources().getColor(R.color.colorOn));
                                 textViewInfo.setText("Arduino Message : " + arduinoMsg9);
                                 break;
 
                         }
-                    case MESSAGE_READ10:
-                        String arduinoMsg10 = msg.obj.toString(); // Read message from Arduino
-                        switch (arduinoMsg10.toLowerCase()) {
-                            case "Every thing is turned off":
-                                buttonOff.setBackgroundColor(getResources().getColor(R.color.colorOff));
-                                textViewInfo.setText("Arduino Message : " + arduinoMsg10);
-                                break;
 
-                        }
                         break;
                 }
             }
@@ -271,7 +259,6 @@ public class BtControllerActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String cmdText = null;
                 cmdText = "";
-
                 String btnState = buttonToggle.getText().toString().toLowerCase();
                 switch (btnState) {
                     case "turn on":
@@ -284,184 +271,176 @@ public class BtControllerActivity extends AppCompatActivity {
                         // Command to turn off LED on Arduino. Must match with the command in Arduino code
                         cmdText = "d"; // <turn off>
                         break;
+                }
+                // Send command to Arduino board
+                connectedThread.write(cmdText);
+            }
+        });
+
+        // Button to ON/OFF Fan on Arduino Board
+        buttonFan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String cmdText = null;
+                cmdText = "";
+                String btnState = buttonFan.getText().toString().toLowerCase();
+                switch (btnState) {
+                    case "Turn fan on":
+                        buttonFan.setText("TURN fan OFF");
+                        // Command to turn on fan on Arduino. Must match with the command in Arduino code
+                        cmdText = "f"; // <turn on>
+                        break;
+                    case "turn fan off":
+                        buttonFan.setText("TURN fan ON");
+                        // Command to turn off fan on Arduino. Must match with the command in Arduino code
+                        cmdText = "z"; // <turn off>
+                        break;
+                }
+                // Send command to Arduino board
+                connectedThread.write(cmdText);
+            }
+        });
+
+        // Button to ON Red LED on Arduino Board
+        buttonRed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String cmdText = null;
+                cmdText = "";
+                String btnState = buttonRed.getText().toString().toLowerCase();
+                switch (btnState) {
+                    case "Red":
+                        buttonRed.setText("Red");
+                        // Command to turn on LED on Arduino. Must match with the command in Arduino code
+                        cmdText = "r"; // <turn on>
+                        break;
 
                 }
                 // Send command to Arduino board
                 connectedThread.write(cmdText);
-
             }
         });
 
-
-
-        buttonFan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String cmdText3 = null;
-                cmdText3 = "";
-
-                String btnState = buttonFan.getText().toString().toLowerCase();
-                switch (btnState) {
-                    case "turn on":
-                        buttonFan.setText("TURN OFF");
-                        // Command to turn on Fan on Arduino. Must match with the command in Arduino code
-                        cmdText3 = "f"; // <turn on>
-                        break;
-                    case "turn off":
-                        buttonFan.setText("TURN ON");
-                        // Command to turn off Fan on Arduino. Must match with the command in Arduino code
-                        cmdText3 = "z"; // <turn off>
-                        break;
-
-                }
-                // Send command to Arduino board
-                connectedThread.write(cmdText3);
-
-            }
-        });
-        buttonDoor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String cmdText4 = null;
-                cmdText4 = "";
-
-                String btnState = buttonDoor.getText().toString().toLowerCase();
-                switch (btnState) {
-                    case "turn on":
-                        buttonDoor.setText("OPENED");
-                        // Command to open the door on Arduino. Must match with the command in Arduino code
-                        cmdText4 = "o"; // <open>
-                        break;
-
-
-                }
-                // Send command to Arduino board
-                connectedThread.write(cmdText4);
-
-            }
-        });
-        buttonMusic.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String cmdText5 = null;
-                cmdText5 = "";
-
-                String btnState = buttonMusic.getText().toString().toLowerCase();
-                switch (btnState) {
-                    case "turn on":
-                        buttonMusic.setText("Played");
-                        // Command to turn on music on Arduino. Must match with the command in Arduino code
-                        cmdText5 = "m"; // <turn on>
-                        break;
-
-
-                }
-                // Send command to Arduino board
-                connectedThread.write(cmdText5);
-
-            }
-        });
-        buttonSendTemperature.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String cmdText6 = null;
-                cmdText6 = "";
-
-                String btnState = buttonSendTemperature.getText().toString().toLowerCase();
-                switch (btnState) {
-                    case "turn on":
-                        buttonSendTemperature.setText("Sent");
-                        // Command to send temp on Arduino. Must match with the command in Arduino code
-                        cmdText6 = "t"; // <turn on>
-                        break;
-
-
-                }
-                // Send command to Arduino board
-                connectedThread.write(cmdText6);
-
-            }
-        });
-
-        buttonRed.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String cmdText2 = null;
-                cmdText2 = "";
-
-                String btnState2 = buttonRed.getText().toString().toLowerCase();
-                switch (btnState2) {
-                    case "turn on":
-                        buttonRed.setText("TURNED ON");
-                        // Command to turn on LED on Arduino. Must match with the command in Arduino code
-                        cmdText2 = "r"; // <turn on>
-                        break;
-
-                }
-                // Send command to Arduino board
-                connectedThread.write(cmdText2);
-            }
-        });
+        // Button to ON Green LED on Arduino Board
         buttonGreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String cmdText2 = null;
-                cmdText2 = "";
-
-                String btnState2 = buttonGreen.getText().toString().toLowerCase();
-                switch (btnState2) {
-                    case "turn on":
-                        buttonGreen.setText("TURNED ON");
+                String cmdText = null;
+                cmdText = "";
+                String btnState = buttonGreen.getText().toString().toLowerCase();
+                switch (btnState) {
+                    case "Green":
+                        buttonGreen.setText("Green");
                         // Command to turn on LED on Arduino. Must match with the command in Arduino code
-                        cmdText2 = "g"; // <turn on>
+                        cmdText = "g"; // <turn on>
                         break;
 
                 }
                 // Send command to Arduino board
-                connectedThread.write(cmdText2);
+                connectedThread.write(cmdText);
             }
         });
+
+        // Button to ON Blue LED on Arduino Board
         buttonBlue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String cmdText2 = null;
-                cmdText2 = "";
-
-                String btnState2 = buttonBlue.getText().toString().toLowerCase();
-                switch (btnState2) {
-                    case "turn on":
-                        buttonBlue.setText("TURNED ON");
+                String cmdText = null;
+                cmdText = "";
+                String btnState = buttonBlue.getText().toString().toLowerCase();
+                switch (btnState) {
+                    case "Blue":
+                        buttonBlue.setText("Blue");
                         // Command to turn on LED on Arduino. Must match with the command in Arduino code
-                        cmdText2 = "b"; // <turn on>
+                        cmdText = "b"; // <turn on>
                         break;
 
                 }
                 // Send command to Arduino board
-                connectedThread.write(cmdText2);
+                connectedThread.write(cmdText);
             }
         });
+
+        // Button to OFF everything on Arduino Board
         buttonOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String cmdText2 = null;
-                cmdText2 = "";
-
-                String btnState2 = buttonOff.getText().toString().toLowerCase();
-                switch (btnState2) {
-                    case "turn on":
-                        buttonOff.setText("TURN OFF");
-                        // Command to turn on LED on Arduino. Must match with the command in Arduino code
-                        cmdText2 = "l"; // <turn off>
+                String cmdText = null;
+                cmdText = "";
+                String btnState = buttonOff.getText().toString().toLowerCase();
+                switch (btnState) {
+                    case "turn everything off":
+                        buttonOff.setText("turn everything off");
+                        // Command to turn off everything on Arduino. Must match with the command in Arduino code
+                        cmdText = "l"; // <turn off>
                         break;
 
                 }
                 // Send command to Arduino board
-                connectedThread.write(cmdText2);
+                connectedThread.write(cmdText);
             }
         });
+
+        // Button to ON music on Arduino Board
+        buttonMusic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String cmdText = null;
+                cmdText = "";
+                String btnState = buttonMusic.getText().toString().toLowerCase();
+                switch (btnState) {
+                    case "Turn Music on":
+                        buttonMusic.setText("Turn Music on");
+                        // Command to turn on music on Arduino. Must match with the command in Arduino code
+                        cmdText = "m"; // <turn on>
+                        break;
+
+                }
+                // Send command to Arduino board
+                connectedThread.write(cmdText);
+            }
+        });
+
+        // Button to OPEN door on Arduino Board
+        buttonDoor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String cmdText = null;
+                cmdText = "";
+                String btnState = buttonDoor.getText().toString().toLowerCase();
+                switch (btnState) {
+                    case "Open the door":
+                        buttonDoor.setText("Open the door");
+                        // Command to open door on Arduino. Must match with the command in Arduino code
+                        cmdText = "o"; // <open>
+                        break;
+
+                }
+                // Send command to Arduino board
+                connectedThread.write(cmdText);
+            }
+        });
+        // Button to Send temp on Arduino Board
+        buttonTemp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String cmdText = null;
+                cmdText = "";
+                String btnState = buttonTemp.getText().toString().toLowerCase();
+                switch (btnState) {
+                    case "Show the temperature on the screen":
+                        buttonTemp.setText("Show the temperature on the screen");
+                        // Command to show temp on Arduino. Must match with the command in Arduino code
+                        cmdText = "t"; // <sent>
+                        break;
+
+                }
+                // Send command to Arduino board
+                connectedThread.write(cmdText);
+            }
+        });
+
     }
-
-
 
     /* ============================ Thread to Create Bluetooth Connection =================================== */
     public static class CreateConnectThread extends Thread {
@@ -475,7 +454,7 @@ public class BtControllerActivity extends AppCompatActivity {
             BluetoothSocket tmp = null;
 
             Utils u = Utils.getInstance();
-            if (ActivityCompat.checkSelfPermission(u.getMainAct(), Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.checkSelfPermission(u.getMainAct(), android.Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
                 // TODO: Consider calling
                 //    ActivityCompat#requestPermissions
                 // here to request the missing permissions, and then overriding
@@ -584,7 +563,6 @@ public class BtControllerActivity extends AppCompatActivity {
                     String readMessage;
                     if (buffer[bytes] == '\n'){
                         readMessage = new String(buffer,0,bytes);
-                        // TODO: Read
                         Log.e("Arduino Message",readMessage);
                         handler.obtainMessage(MESSAGE_READ,readMessage).sendToTarget();
                         bytes = 0;
@@ -628,10 +606,5 @@ public class BtControllerActivity extends AppCompatActivity {
         a.addCategory(Intent.CATEGORY_HOME);
         a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(a);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
     }
 }
