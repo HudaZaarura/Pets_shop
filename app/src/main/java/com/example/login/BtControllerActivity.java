@@ -285,7 +285,7 @@ public class BtControllerActivity extends AppCompatActivity {
                 cmdText = "";
                 String btnState = buttonFan.getText().toString().toLowerCase();
                 switch (btnState) {
-                    case "Turn fan on":
+                    case "turn fan on":
                         buttonFan.setText("TURN fan OFF");
                         // Command to turn on fan on Arduino. Must match with the command in Arduino code
                         cmdText = "f"; // <turn on>
@@ -309,7 +309,7 @@ public class BtControllerActivity extends AppCompatActivity {
                 cmdText = "";
                 String btnState = buttonRed.getText().toString().toLowerCase();
                 switch (btnState) {
-                    case "Red":
+                    case "red":
                         buttonRed.setText("Red");
                         // Command to turn on LED on Arduino. Must match with the command in Arduino code
                         cmdText = "r"; // <turn on>
@@ -329,7 +329,7 @@ public class BtControllerActivity extends AppCompatActivity {
                 cmdText = "";
                 String btnState = buttonGreen.getText().toString().toLowerCase();
                 switch (btnState) {
-                    case "Green":
+                    case "green":
                         buttonGreen.setText("Green");
                         // Command to turn on LED on Arduino. Must match with the command in Arduino code
                         cmdText = "g"; // <turn on>
@@ -349,7 +349,7 @@ public class BtControllerActivity extends AppCompatActivity {
                 cmdText = "";
                 String btnState = buttonBlue.getText().toString().toLowerCase();
                 switch (btnState) {
-                    case "Blue":
+                    case "blue":
                         buttonBlue.setText("Blue");
                         // Command to turn on LED on Arduino. Must match with the command in Arduino code
                         cmdText = "b"; // <turn on>
@@ -389,7 +389,7 @@ public class BtControllerActivity extends AppCompatActivity {
                 cmdText = "";
                 String btnState = buttonMusic.getText().toString().toLowerCase();
                 switch (btnState) {
-                    case "Turn Music on":
+                    case "turn music on":
                         buttonMusic.setText("Turn Music on");
                         // Command to turn on music on Arduino. Must match with the command in Arduino code
                         cmdText = "m"; // <turn on>
@@ -409,7 +409,7 @@ public class BtControllerActivity extends AppCompatActivity {
                 cmdText = "";
                 String btnState = buttonDoor.getText().toString().toLowerCase();
                 switch (btnState) {
-                    case "Open the door":
+                    case "open the door":
                         buttonDoor.setText("Open the door");
                         // Command to open door on Arduino. Must match with the command in Arduino code
                         cmdText = "o"; // <open>
@@ -428,7 +428,7 @@ public class BtControllerActivity extends AppCompatActivity {
                 cmdText = "";
                 String btnState = buttonTemp.getText().toString().toLowerCase();
                 switch (btnState) {
-                    case "Show the temperature on the screen":
+                    case "show the temperature on the screen":
                         buttonTemp.setText("Show the temperature on the screen");
                         // Command to show temp on Arduino. Must match with the command in Arduino code
                         cmdText = "t"; // <sent>

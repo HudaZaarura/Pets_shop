@@ -143,6 +143,7 @@ public class PetAdd extends AppCompatActivity {
                             radioButton.setChecked(false);
                             Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
                             // TODO: gotoAllPet
+                            gotoAllPets(view);
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
@@ -156,7 +157,10 @@ public class PetAdd extends AppCompatActivity {
             dbMessage.Message(getApplicationContext(), ex.getMessage());
         }
     }
-
+    public void gotoAllPets(View view) {
+        Intent i = new Intent(this, AllPet.class);
+        startActivity(i);
+    }
     public void selectPhoto(View view) {
         Intent intent = new Intent();
         intent.setType("image/*");

@@ -45,10 +45,10 @@ public class MainActivity extends AppCompatActivity {
         loader = findViewById(R.id.loader);
         forgotPasswordButton = findViewById(R.id.forgotpw);
 
-        if(auth.getCurrentUser() != null) {
+       /* if(auth.getCurrentUser() != null) {
             Intent intent = new Intent(MainActivity.this, AllPet.class);
             startActivity(intent);
-        }
+        }*/
 
         forgotPasswordButton.setOnClickListener(new View.OnClickListener() {
             @Override

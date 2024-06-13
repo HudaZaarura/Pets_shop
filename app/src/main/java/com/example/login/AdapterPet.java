@@ -1,4 +1,5 @@
 package com.example.login;
+// تعريف الحزمة التي تحتوي على هذا الكود
 
 import android.content.Context;
 import android.content.Intent;
@@ -19,99 +20,87 @@ import java.io.Serializable;
 import java.text.BreakIterator;
 import java.util.List;
 
+// بداية تعريف صف AdapterPet الذي يرث من RecyclerView.Adapter
 public class AdapterPet extends RecyclerView.Adapter<AdapterPet.ViewHolder> {
 
+    // المتغيرات الخاصة بالبيانات والمحول والسياق
+    private List<Pet> mData;  // قائمة البيانات من نوع Pet
+    private LayoutInflater mInflater;  // محول لتوسيع التخطيط
+    private Context context;  // السياق الحالي
 
-    private List<Pet> mData;
-    private LayoutInflater mInflater;
-    private Context context;
-
+    // تعريف مستمع النقر على العناصر
     private final AdapterPet.ItemClickListener mClickListener = new ItemClickListener() {
         @Override
         public void onItemClick(View view, int position) {
-          Pet pet = mData.get(position);
-         // dbMessage.Message(context,"dd");
-          Intent i = new Intent(context,PetDetailsActivity.class);
-          i.putExtra("pet",pet);
-//
-//
-           context.startActivity(i);
+            Pet pet = mData.get(position);  // الحصول على العنصر الذي تم النقر عليه
+            Intent i = new Intent(context, PetDetailsActivity.class);  // إنشاء نية للانتقال إلى النشاط PetDetailsActivity
+            i.putExtra("pet", pet);  // إضافة البيانات إلى النية
+            context.startActivity(i);  // بدء النشاط الجديد
         }
     };
 
-    // data is passed into the constructor
+    // المُنشئ الذي يستقبل السياق وقائمة البيانات
     AdapterPet(Context context, List<Pet> data) {
-        this.mInflater = LayoutInflater.from(context);
-        this.mData = data;
-        this.context = context;
+        this.mInflater = LayoutInflater.from(context);  // الحصول على المحول من السياق
+        this.mData = data;  // تخزين البيانات في المتغير الخاص
+        this.context = context;  // تخزين السياق في المتغير الخاص
     }
 
-    // inflates the row layout from xml when needed
+    // إنشاء وتوسيع تخطيط الصف من ملف XML عند الحاجة
     @Override
     public AdapterPet.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.row, parent, false);
-        return new AdapterPet.ViewHolder(view);
+        View view = mInflater.inflate(R.layout.row, parent, false);  // توسيع التخطيط من ملف XML
+        return new AdapterPet.ViewHolder(view);  // إنشاء كائن ViewHolder جديد
     }
 
-    // binds the data to the TextView in each row
+    // ربط البيانات بعناصر الواجهة في كل صف
     @Override
     public void onBindViewHolder(AdapterPet.ViewHolder holder, int position) {
-        Pet pet = mData.get(position);
-        holder.tvName.setText(pet.getDescription());
-        holder.txCatg.setText((pet.getCategory()));
-        holder.txAge.setText(pet.getAge());
-        if(pet.getPhoto() == null ||  pet.getPhoto().isEmpty()) {
-            Picasso.get().load(R.drawable.img).into(holder.ivPhoto);
-        }
-        else {
-            Picasso.get().load(pet.getPhoto()).into(holder.ivPhoto);
+        Pet pet = mData.get(position);  // الحصول على العنصر في الموقع المحدد
+        holder.tvName.setText(pet.getDescription());  // تعيين الوصف في TextView
+        holder.txCatg.setText(pet.getCategory());  // تعيين الفئة في TextView
+        holder.txAge.setText(pet.getAge());  // تعيين العمر في TextView
+        if (pet.getPhoto() == null || pet.getPhoto().isEmpty()) {
+            Picasso.get().load(R.drawable.img).into(holder.ivPhoto);  // تحميل صورة افتراضية إذا لم يكن هناك صورة
+        } else {
+            Picasso.get().load(pet.getPhoto()).into(holder.ivPhoto);  // تحميل الصورة من الرابط
         }
     }
 
-    // total number of rows
+    // إرجاع العدد الإجمالي للعناصر
     @Override
     public int getItemCount() {
         return mData.size();
     }
 
-
-    // stores and recycles views as they are scrol    led off screen
+    // تعريف فئة ViewHolder التي تخزن وتعيد تدوير المشاهد
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView tvName;
-        ImageView ivPhoto;
-        TextView txAge;
-        TextView txCatg;
+        TextView tvName;  // عنصر TextView لاسم الحيوان الأليف
+        ImageView ivPhoto;  // عنصر ImageView لعرض صورة الحيوان الأليف
+        TextView txAge;  // عنصر TextView للعمر
+        TextView txCatg;  // عنصر TextView للفئة
         ViewHolder(View itemView) {
             super(itemView);
-            tvName = itemView.findViewById(R.id.name);
-            ivPhoto = itemView.findViewById(R.id.imageViewrow);
-            txAge=itemView.findViewById(R.id.age);
-            txCatg=itemView.findViewById(R.id.detailsrow);
-            itemView.setOnClickListener(this);
+            tvName = itemView.findViewById(R.id.name);  // العثور على TextView الاسم في تخطيط الصف
+            ivPhoto = itemView.findViewById(R.id.imageViewrow);  // العثور على ImageView في تخطيط الصف
+            txAge = itemView.findViewById(R.id.age);  // العثور على TextView العمر في تخطيط الصف
+            txCatg = itemView.findViewById(R.id.detailsrow);  // العثور على TextView الفئة في تخطيط الصف
+            itemView.setOnClickListener(this);  // تعيين مستمع النقر على العنصر الحالي
         }
 
         @Override
         public void onClick(View view) {
-            if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
+            if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());  // استدعاء مستمع النقر عند النقر على العنصر
         }
     }
 
-    // convenience method for getting data at click position
+    // طريقة للحصول على العنصر عند موقع معين
     Pet getItem(int id) {
         return mData.get(id);
     }
 
-    // allows clicks events to be caught
-    /*
-    void setClickListener(AdapterPet.ItemClickListener itemClickListener) {
-        this.mClickListener = itemClickListener;
-    }
-**/
-    // parent activity will implement this method to respond to click events
+    // تعريف واجهة لمستمع النقرات (يمكن أن تنفذها النشاطات أو الشظايا)
     public interface ItemClickListener {
         void onItemClick(View view, int position);
     }
-   }
-
-
-
+}
