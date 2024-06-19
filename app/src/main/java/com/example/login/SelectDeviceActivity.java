@@ -31,11 +31,12 @@ public class SelectDeviceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_select_device);
         // Bluetooth Setup
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-
+        // التحقق من الإذن للاتصال بجهاز بلوتوث
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
 
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.BLUETOOTH_CONNECT}, REQUEST_PERMISSION_CONNECT_BLUETOOTH);
         }
+        // الحصول على الأجهزة المقترنة
         Set<BluetoothDevice> pairedDevices = bluetoothAdapter.getBondedDevices();
         List<Object> deviceList = new ArrayList<>();
         if (!pairedDevices.isEmpty()) {

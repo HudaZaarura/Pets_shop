@@ -17,10 +17,12 @@ public class DeviceListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     private Context context;
     private List<Object> deviceList;
 
+    // ViewHolder لعرض عناصر القائمة
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView textName, textAddress;
         LinearLayout linearLayout;
 
+        // بناء ViewHolder
         public ViewHolder(View v) {
             super(v);
             textName = v.findViewById(R.id.textViewDeviceName);
@@ -29,18 +31,21 @@ public class DeviceListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         }
     }
 
+    // Adapter لإدارة عرض البيانات في RecyclerView
     public DeviceListAdapter(Context context, List<Object> deviceList) {
         this.context = context;
         this.deviceList = deviceList;
 
     }
 
+    // إنشاء ViewHolder عند الحاجة لعرض عنصر جديد
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.device_info_layout, parent, false);
         ViewHolder vh = new ViewHolder(v);
         return vh;
     }
 
+    // ربط بيانات عنصر بعرضه في ViewHolder
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
         ViewHolder itemHolder = (ViewHolder) holder;

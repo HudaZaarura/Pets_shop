@@ -5,10 +5,12 @@ import android.graphics.drawable.Drawable;
 import java.io.Serializable;
 import java.util.Locale;
 
+// تعريف لأنواع الحيوانات الأليفة
 enum PetCategory{
     dogs,cats,horses,birds
 }
 
+// كلاس لتمثيل بيانات الحيوانات الأليفة
 public class Pet implements Serializable {
 
     private String description;
@@ -20,9 +22,12 @@ public class Pet implements Serializable {
     private String gender;
     private String age;
 
+    // البناء الفارغ
     public  Pet(){
 
     }
+
+    // البناء مع البيانات الرئيسية
     public Pet(String contactnum, String price, String location, PetCategory category, String photo, String gender, String age, String description) {
         this.contactnum = contactnum;
         this.price = price;
@@ -36,7 +41,7 @@ public class Pet implements Serializable {
     }
 
 
-
+    // جلب رقم الاتصال
     public String getContactnum() {
         return contactnum;
     }
@@ -72,6 +77,7 @@ public class Pet implements Serializable {
         return description;
     }
 
+    // تعيين رقم الاتصال
     public void setContactnum(String contactnum) {
         this.contactnum = contactnum;
     }
@@ -106,6 +112,7 @@ public class Pet implements Serializable {
         this.description = description;
     }
 
+    // دالة لتمثيل الكائن كسلسلة نصية للطباعة والتصحيح
     @Override
     public String toString() {
         return "Pet{" +

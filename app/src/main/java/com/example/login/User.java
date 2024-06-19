@@ -1,13 +1,14 @@
 package com.example.login;
 
 import java.io.Serializable;
-
+// نموذج للمستخدم
 public class User  implements Serializable {
     private String Name;
 
     public  User(){
 
     }
+    // إنشاء مستخدم بالاسم واسم المستخدم
     public User(String name, String userName) {
         Name = name;
         this.userName = userName;

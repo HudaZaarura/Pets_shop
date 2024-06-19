@@ -33,6 +33,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.UUID;
 
+// Activity لإضافة حيوان أليف جديد
 public class PetAdd extends AppCompatActivity {
 
     private RadioGroup radioGroup;
@@ -63,6 +64,7 @@ public class PetAdd extends AppCompatActivity {
         connectComponents();
     }
 
+    // الاستجابة لفعل المستخدم عند اختيار أحد الأزرار الخاصة بالجنس
     public void onRadioButtonClicked(View view) {
         // Is the button now checked?
         boolean checked = ((RadioButton) view).isChecked();
@@ -80,6 +82,7 @@ public class PetAdd extends AppCompatActivity {
         }
     }
 
+    // ربط مكونات واجهة المستخدم بمتغيرات البرنامج
     private void connectComponents() {
         etlocation = findViewById(R.id.etlocation);
         etprice = findViewById(R.id.etprice);
@@ -97,12 +100,14 @@ public class PetAdd extends AppCompatActivity {
         btnDisplay = findViewById(R.id.btnDisplay);
     }
 
+    // التصرف عند الضغط على زر الرجوع
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         finish();
     }
 
+    // إضافة حيوان أليف جديد
     public void add(View view) {
         try {
             String location, description, age, phone, kind, photo, price;
@@ -115,7 +120,7 @@ public class PetAdd extends AppCompatActivity {
             kind = spkind.getSelectedItem().toString();
             int radio = radioGroup.getCheckedRadioButtonId();
             if (ivPhoto.getDrawable() == null)
-                photo = "no_image";
+                photo = "";
             else
                 photo = downloadableURL;
 
@@ -157,10 +162,13 @@ public class PetAdd extends AppCompatActivity {
             dbMessage.Message(getApplicationContext(), ex.getMessage());
         }
     }
+
+    // الانتقال إلى شاشة عرض كل الحيوانات الأليفة
     public void gotoAllPets(View view) {
         Intent i = new Intent(this, AllPet.class);
         startActivity(i);
     }
+    // اختيار صورة من الجهاز
     public void selectPhoto(View view) {
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -168,6 +176,7 @@ public class PetAdd extends AppCompatActivity {
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), 40);
     }
 
+    // استجابة لنتيجة اختيار الصورة
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 40) {
@@ -184,6 +193,7 @@ public class PetAdd extends AppCompatActivity {
         }
     }
 
+    // رفع الصورة المختارة إلى خدمة Firebase Storage
     private void uploadImage() {
         if (filePath != null) {
             ProgressDialog progressDialog = new ProgressDialog(this);

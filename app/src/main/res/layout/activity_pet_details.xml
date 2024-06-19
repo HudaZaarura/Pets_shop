@@ -115,16 +115,7 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/avatars" />
 
-        <ImageView
-            android:id="@+id/imagedetails3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:layout_marginEnd="16dp"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -266,5 +257,14 @@
                 android:text="description:" />
         </LinearLayout>
 
+        <ImageView
+            android:id="@+id/imagedetails3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="center"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="16dp"
+            tools:srcCompat="@tools:sample/avatars" />
     </LinearLayout>
 </RelativeLayout>

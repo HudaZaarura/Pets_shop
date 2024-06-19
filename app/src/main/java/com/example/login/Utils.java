@@ -19,7 +19,7 @@ public class Utils {
     public Utils()
     {
     }
-
+    // الحصول على مثيل من Utils مع تمرير النشاط الرئيسي
     public static Utils getInstance(BtControllerActivity mainAct)
     {
         if (instance == null)

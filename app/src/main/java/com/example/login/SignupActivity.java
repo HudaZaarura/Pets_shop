@@ -29,6 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.regex.Pattern;
 
 public class SignupActivity extends AppCompatActivity {
+    // مكونات واجهة المستخدم
 
     private EditText  person,etUsername,etPassword,confirmpwd;
     private Utilities utils;
@@ -48,10 +49,12 @@ public class SignupActivity extends AppCompatActivity {
         connectComponents();
         createFirebase();
     }
+    // تهيئة قاعدة البيانات Firebase
     public void createFirebase(){
         firebaseDatabase=FirebaseDatabase.getInstance(url);
         databaseReference=firebaseDatabase.getReference("users");
     }
+    // ربط مكونات واجهة المستخدم
     private void connectComponents() {
         title=findViewById(R.id.title);
         person=findViewById(R.id.person);
@@ -62,11 +65,12 @@ public class SignupActivity extends AppCompatActivity {
         fbs = FireBaseServices.getInstance();
         animate();
     }
+    // إضافة حركة إلى العنوان
     private void animate(){
         title.setX(-1000);
         title.animate().translationX(-100).setDuration(600).translationX(0);
     }
-
+    // تعيين رسالة خطأ إذا كانت خانة النص فارغة
     public  void SetError(View view){
         if(view instanceof  EditText){
             EditText v=(EditText) view;
@@ -76,6 +80,7 @@ public class SignupActivity extends AppCompatActivity {
             }
         }
     }
+    // التعامل مع زر التسجيل
     public void signup(View view) {
 
         String username = etUsername.getText().toString();
@@ -89,6 +94,7 @@ public class SignupActivity extends AppCompatActivity {
         user.setUserName(username);
        // user.setPwd(password);
 
+        // التحقق مما إذا كانت أي من الحقول فارغة
         if (username.trim().isEmpty() || password.trim().isEmpty()|| pwdconfirm.trim().isEmpty())
         {
 
@@ -97,7 +103,7 @@ public class SignupActivity extends AppCompatActivity {
         }
 
         if(isEmpty){
-
+            // إظهار رسالة خطأ والعودة في حالة وجود حقل فارغ
             SetError(etUsername);
             SetError(etPassword);
             SetError(person);
@@ -153,7 +159,7 @@ public class SignupActivity extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                                         if (task.isSuccessful()) {
-
+                                         // إضافة المستخدم إلى قاعدة البيانات
                                             firebaseDatabase=FirebaseDatabase.getInstance(url);
                                             databaseReference=firebaseDatabase.getReference("users");
                                             if(databaseReference!=null) {
@@ -185,6 +191,7 @@ public class SignupActivity extends AppCompatActivity {
 //                                            finish();
 
                                         } else {
+                                            // الانتقال إلى النشاط AllPet في حالة فشل التسجيل
                                             Intent i = new Intent(SignupActivity.this, AllPet.class);
                                             startActivity(i);
 
@@ -221,6 +228,7 @@ public class SignupActivity extends AppCompatActivity {
         }
     }
 
+    // التعامل مع زر إضافة الحيوانات الأليفة
     public void addpet(View view) {
         Intent i = new Intent(SignupActivity.this, PetAdd.class);
         startActivity(i);

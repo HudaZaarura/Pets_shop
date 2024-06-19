@@ -1,16 +1,19 @@
 package com.example.login;
+
+// تعريف تعداد لخيارات القرار
 enum decision{choice1,choice2}
 
+// تعريف الصف الذي يمثل مشهدًا في القصة
 class Scene {
-    private decision dc;
-    private String option1;
-    private String option2;
-    private Double duration;
-    private int scenenum;
-    private String video;
+    private decision dc; // القرار الذي يجب اتخاذه في المشهد
+    private String option1; // الخيار الأول
+    private String option2; // الخيار الثاني
+    private Double duration; // المدة المتوقعة للمشهد
+    private int scenenum; // رقم المشهد
+    private String video; // اسم ملف الفيديو المرتبط بالمشهد
 
-    public Scene() {
-    }
+    // البناء الافتراضي
+    public Scene() {}
 
     @Override
     public String toString() {
@@ -24,6 +27,7 @@ class Scene {
                 '}';
     }
 
+    // بناء مخصص لتهيئة جميع الخصائص
     public Scene(decision dc, String option1, String option2, Double duration, int scenenum, String video) {
         this.dc = dc;
         this.option1 = option1;
@@ -33,6 +37,7 @@ class Scene {
         this.video = video;
     }
 
+    // استرجاع القرار المطلوب لهذا المشهد
     public decision getDc() {
         return dc;
     }

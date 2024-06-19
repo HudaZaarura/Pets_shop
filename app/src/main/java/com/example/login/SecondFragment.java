@@ -13,7 +13,7 @@ import com.example.login.databinding.FragmentSecondBinding;
 
 public class SecondFragment extends Fragment {
 
-    private FragmentSecondBinding binding;
+    private FragmentSecondBinding binding;// ربط متغير الربط بواجهة الفريق الثاني
 
     @Override
     public View onCreateView(
@@ -28,10 +28,11 @@ public class SecondFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        // تعيين مستمع النقر لزر الانتقال إلى الفريق الأول
         binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // الانتقال إلى الفريق الأول باستخدام الملاح الذي يجد ملاح الفريق الثاني
                 NavHostFragment.findNavController(SecondFragment.this)
                         .navigate(R.id.action_SecondFragment_to_FirstFragment);
             }
@@ -41,7 +42,7 @@ public class SecondFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        binding = null;
+        binding = null;// إلغاء الربط لتفادي تسرب الذاكرة
     }
 
 }
